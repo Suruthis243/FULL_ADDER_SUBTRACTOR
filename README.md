@@ -26,6 +26,9 @@ Carry = AB + ACin + BCin
 
 **Figure -1 FULL ADDER**
 
+![Screenshot 2025-04-23 230658](https://github.com/user-attachments/assets/edf92575-ea99-4d5e-a67f-07d61e1c5237)
+
+
 **Full Subtractor**
 
 A full subtractor is a combinational circuit that performs subtraction involving three bits, namely minuend, subtrahend, and borrow-in . It accepts three inputs: minuend, subtrahend and a borrow bit and it produces two outputs: difference and borrow.
@@ -36,20 +39,99 @@ Diff = A ⊕ B ⊕ Bin
 
 Borrow out = A'Bin + A'B + BBin
 
+![Screenshot 2025-04-23 230831](https://github.com/user-attachments/assets/61507927-ce32-4e7d-a2d3-468024d86912)
+
+
 **Truthtable**
+Full adder
+![Screenshot 2025-04-23 230930](https://github.com/user-attachments/assets/8eb552a5-01a4-40b0-9703-de92fd242f93)
+Full subractor
+![Screenshot 2025-04-23 231012](https://github.com/user-attachments/assets/12d3ee0a-2aca-444f-832d-96dd8cbd0a89)
+
 
 **Procedure**
 
-Write the detailed procedure here
+1.Type the program in Quartus software.
+
+2.Compile and run the program.
+
+3.Generate the RTL schematic and save the logic diagram.
+
+4.Create nodes for inputs and outputs to generate the timing diagram.
+
+5.For different input combinations generate the timing diagram.
+
 
 **Program:**
 
-/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming.
+Developed by:S.Suruthi
+RegisterNumber:212224220114
+```
+Full adder
+
+//full adder
+module exp4(sum,cout,a,b,cin);
+output sum;
+output cout;
+input a;
+input b;
+input cin;
+
+//internal nets
+wire s1,c1,c2;
+
+
+//instantiate logic gate primitives
+xor (s1,a,b);
+and (c1,a,b);
+xor(sum,s1,cin);
+and(c2,s1,cin);
+or(cout,c2,c1);
+
+
+endmodule
+
+Full subtractor
+
+module exp4a (df,bo,a,b,bin);
+output df;
+output bo;
+input a;
+input b;
+input bin;
+wire w1,w2,w3;
+assign w1=a^b;
+assign w2=(~a&b);
+assign w3=(~w1&bin);
+assign df=^bin;
+assign bo=w2|w3;
+endmodule
+```
 
 **RTL Schematic**
+Full adder
+
+![Screenshot 2025-04-23 231357](https://github.com/user-attachments/assets/ea5dd6ac-2175-4083-8a43-023672ca8577)
+
+Full subractor
+
+![Screenshot 2025-04-23 231510](https://github.com/user-attachments/assets/bc7b26d7-53a3-40ae-a0a9-92708126ab52)
+
+
 
 **Output Timing Waveform**
+Full adder
+
+![Screenshot 2025-04-23 232238](https://github.com/user-attachments/assets/d1f0dcbc-52c7-4dfb-bb58-1a7e1641289f)
+
+
+Full subractor
+
+![Screenshot 2025-04-23 231713](https://github.com/user-attachments/assets/b94e9fda-8ee7-448f-b56f-4910a31ded2e)
+
+
+
 
 **Result:**
 
